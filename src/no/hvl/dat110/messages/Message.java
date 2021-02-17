@@ -1,5 +1,11 @@
 package no.hvl.dat110.messages;
 
+/**
+ * All messages will contain information about a user and have a type as defined in MessageType.java. 
+ * The user is assumed to uniquely identify a connected client.
+ * @author frkmj
+ *
+ */
 public abstract class Message {
 
 	// base class for messages exchanged between broker and clients
