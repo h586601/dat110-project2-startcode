@@ -15,6 +15,12 @@ public class Client extends Thread {
 		this.user = user;
 	}
 
+	/**
+	 * Konverterer javaobjekt til JSON Se eksempel:
+	 * https://attacomsian.com/blog/gson-convert-java-object-to-from-json
+	 * 
+	 * @param msg
+	 */
 	private void send(Message msg) {
 
 		connection.send(MessageUtils.toTransportMessage(msg));
@@ -79,6 +85,12 @@ public class Client extends Thread {
 
 	}
 
+	/**
+	 * Oppretter Java-objektet CreateTopicMsg og konverterer til JSON feks dette
+	 * formatet: {"topic":"Project 2","type":"CREATETOPIC","user":"Ida"}
+	 * 
+	 * @param topic
+	 */
 	public void createTopic(String topic) {
 
 		CreateTopicMsg msg = new CreateTopicMsg(user, topic);

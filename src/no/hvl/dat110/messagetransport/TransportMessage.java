@@ -7,12 +7,13 @@ public class TransportMessage {
 	private byte[] payload;
 
 	public TransportMessage(byte[] payload) {
-		// TODO: check for length within boundary
-		if (payload == null || (payload.length + 1 > MessageConfig.MESSAGINGPORT)) {
-			throw new RuntimeException("Message: invalid payload");
+		// Check for length within boundary
+		if (payload == null || (payload.length + 1 > MessageConfig.SEGMENTSIZE)) {
+			throw new RuntimeException(
+					"Message: payload er null eller større enn " + (MessageConfig.SEGMENTSIZE-1) + " bytes");
 		}
-		
-		this.payload = payload; 
+
+		this.payload = payload;
 	}
 
 	public TransportMessage() {
@@ -20,36 +21,41 @@ public class TransportMessage {
 	}
 
 	public byte[] getData() {
-		return this.payload; 
+		return this.payload;
 	}
 
+	/**
+	 * Encapsulates the payload of the message
+	 * Add "header information"?
+	 * 
+	 * @return byte[]
+	 */
 	public byte[] encapsulate() {
-		
+
 		byte[] encoded;
-		
-		// TODO
-		// encapulate/encode the payload of the message
-		
+
 		encoded = new byte[MessageConfig.SEGMENTSIZE];
 
-		encoded[0] =  (byte)(payload.length);
+		encoded[0] = (byte) (payload.length);
 
-		for (int i = 0;i<payload.length;i++) {
-			encoded[i+1] = payload[i];
+		for (int i = 0; i < payload.length; i++) {
+			encoded[i + 1] = payload[i];
 		}
-		
+
 		return encoded;
-		
+
 	}
 
+	/**
+	 * Decapsulates data and put it in payload bytearray
+	 * 
+	 * @param received
+	 */
 	public void decapsulate(byte[] received) {
 
-		// TODO
-		// decapsulate data in received and put in payload
-		
 		int len = received[0];
-		
-		payload = Arrays.copyOfRange(received,1,len+1);
-		
+
+		payload = Arrays.copyOfRange(received, 1, len + 1);
+
 	}
 }
