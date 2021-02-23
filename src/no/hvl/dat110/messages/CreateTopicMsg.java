@@ -34,7 +34,7 @@ public class CreateTopicMsg extends Message {
 	}
 
 	public static void main(String[] args) {
-		//Til hjelp for å sjekke klassen
+		
 		CreateTopicMsg ct = new CreateTopicMsg("Ida", "Project2");
 		System.out.println(ct.getUser());
 		System.out.println(MessageUtils.toJson(ct));

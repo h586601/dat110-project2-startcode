@@ -51,6 +51,12 @@ public class Broker extends Stopable {
 			}
 	}
 	
+	/**
+	 * Connects if the MessageType of received message is CONNECT
+	 * Else "protocol error: first message should be connect"
+	 * 
+	 * @param connection
+	 */
 	private void waitConnect(Connection connection) {
 				
 		Message msg = MessageUtils.receive(connection);

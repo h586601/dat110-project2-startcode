@@ -84,7 +84,13 @@ public class Dispatcher extends Stopable {
 		}
 	}
 
-	// called from Broker after having established the underlying connection
+	/**
+	 * Called from Broker after having established the underlying connection. 
+	 * Prints the user connected and adds it to ClientSession storage
+	 * 
+	 * @param msg
+	 * @param connection
+	 */
 	public void onConnect(ConnectMsg msg, Connection connection) {
 
 		String user = msg.getUser();

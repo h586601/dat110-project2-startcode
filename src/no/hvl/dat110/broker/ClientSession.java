@@ -4,6 +4,16 @@ import no.hvl.dat110.messages.Message;
 import no.hvl.dat110.messages.MessageUtils;
 import no.hvl.dat110.messagetransport.Connection;
 
+/**
+ * Used to represent a session with a currently connected client on the broker side. 
+ * Whenever a client (user) connects, a corresponding ClientSession-object will be created on the broker-side 
+ * representing the underlying message transport connection. 
+ * 
+ * The methods in this class must be used when the broker is to receive and send messages to a connected client.
+ * 
+ * @author frkmj
+ *
+ */
 public class ClientSession {
 
 	private String user;

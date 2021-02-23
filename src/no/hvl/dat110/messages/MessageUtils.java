@@ -92,6 +92,14 @@ public class MessageUtils {
 		connection.send(toTransportMessage(message));
 	}
 	
+	/**
+	 * Connection object receives an inStream and converts it 
+	 * 
+	 * Transport Message -> bytes -> Json representation -> Java-object Message
+	 * 
+	 * @param connection
+	 * @return Message
+	 */
 	public static Message receive (Connection connection) {
 		
 		Logger.log("?");

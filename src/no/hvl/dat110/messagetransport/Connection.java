@@ -67,7 +67,7 @@ public class Connection {
 	/**
 	 * Reads a segment from the input stream and decapsulates into message
 	 * 
-	 * @return
+	 * @return TransportMessage
 	 */
 	public TransportMessage receive() {
 
