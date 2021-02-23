@@ -22,13 +22,11 @@ public class MessagingServer {
 	}
 
 	// accept an incoming connection from a client
+	// accept TCP connection on welcome socket and create connection
 	public Connection accept () {
 		
 		Connection connection = null;
-		
-		// TODO
-		// accept TCP connection on welcome socket and create connection
-		
+
 		try {
 			
 			Socket connectionSocket = welcomeSocket.accept();
@@ -39,7 +37,6 @@ public class MessagingServer {
 			
 			System.out.println("Messaging server: " + ex.getMessage());
 			ex.printStackTrace();
-			// TODO: closing welcomeSocket
 		}
 		
 		return connection;
