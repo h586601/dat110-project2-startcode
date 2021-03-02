@@ -1,7 +1,6 @@
 package no.hvl.dat110.iotsystem;
 
 import no.hvl.dat110.client.Client;
-import no.hvl.dat110.messages.Message;
 import no.hvl.dat110.messages.PublishMsg;
 
 public class DisplayDevice {
@@ -27,9 +26,8 @@ public class DisplayDevice {
 		// - receive messages on the topic
 		int count = COUNT;
 		do {
-			Message msg = client.receive();
-			PublishMsg publish = (PublishMsg) msg;
-			String message = publish.getMessage();
+			PublishMsg msg = (PublishMsg) client.receive();
+			String message = msg.getMessage();
 			count--;
 
 			System.out.println("DISPLAY: " + message);

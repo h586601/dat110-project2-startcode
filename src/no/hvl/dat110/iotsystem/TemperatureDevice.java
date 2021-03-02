@@ -25,16 +25,22 @@ public class TemperatureDevice {
 			int temp = sn.read();
 			System.out.println("READING: " + temp);
 			client.publish(Common.TEMPTOPIC, "" + temp);
-
+			count--;
+			
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 
-			count--;
 		} while (count > 7);
 
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 		client.disconnect();
 
 		System.out.println("Temperature device stopping ... ");
