@@ -21,8 +21,12 @@ public class MessagingServer {
 		}
 	}
 
-	// accept an incoming connection from a client
-	// accept TCP connection on welcome socket and create connection
+	/**
+	 *  Accepts an incoming connection from a client
+	 *  Accepts TCP connection on welcome socket and create connection
+	 *  
+	 * @return
+	 */
 	public Connection accept () {
 		
 		Connection connection = null;

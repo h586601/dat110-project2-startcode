@@ -3,7 +3,6 @@ package no.hvl.dat110.broker;
 import java.util.Set;
 import java.util.Collection;
 
-import no.hvl.dat110.common.TODO;
 import no.hvl.dat110.common.Logger;
 import no.hvl.dat110.common.Stopable;
 import no.hvl.dat110.messages.*;
@@ -46,11 +45,16 @@ public class Dispatcher extends Stopable {
 		}
 	}
 
+	/**
+	 * Invokes the appropriate handler method
+	 * 
+	 * @param client
+	 * @param msg
+	 */
 	public void dispatch(ClientSession client, Message msg) {
 
 		MessageType type = msg.getType();
 
-		// invoke the appropriate handler method
 		switch (type) {
 
 		case DISCONNECT:
@@ -85,8 +89,8 @@ public class Dispatcher extends Stopable {
 	}
 
 	/**
-	 * Called from Broker after having established the underlying connection. 
-	 * Prints the user connected and adds it to ClientSession storage
+	 * Called from Broker after having established the underlying connection. Prints
+	 * the user connected and adds it to ClientSession storage
 	 * 
 	 * @param msg
 	 * @param connection
@@ -101,7 +105,11 @@ public class Dispatcher extends Stopable {
 
 	}
 
-	// called by dispatch upon receiving a disconnect message
+	/**
+	 * Called by dispatch upon receiving a disconnect message
+	 * 
+	 * @param msg
+	 */
 	public void onDisconnect(DisconnectMsg msg) {
 
 		String user = msg.getUser();
@@ -112,57 +120,81 @@ public class Dispatcher extends Stopable {
 
 	}
 
+	/**
+	 * Creates the topic in the broker storage and topic is contained in the create
+	 * topic message
+	 * 
+	 * @param msg
+	 */
 	public void onCreateTopic(CreateTopicMsg msg) {
 
 		Logger.log("onCreateTopic:" + msg.toString());
 
-		// TODO: create the topic in the broker storage
-		// the topic is contained in the create topic message
+		String topic = msg.getTopic();
+		storage.createTopic(topic);
 
-		throw new UnsupportedOperationException(TODO.method());
 
 	}
 
+	/**
+	 * Deletes the topic from the broker storage and the topic is contained in the
+	 * delete topic message
+	 * 
+	 * @param msg
+	 */
 	public void onDeleteTopic(DeleteTopicMsg msg) {
 
 		Logger.log("onDeleteTopic:" + msg.toString());
 
-		// TODO: delete the topic from the broker storage
-		// the topic is contained in the delete topic message
-		
-		throw new UnsupportedOperationException(TODO.method());
+		String topic = msg.getTopic();
+		storage.deleteTopic(topic);
+
 	}
 
+	/**
+	 * Subscribes user to the topic. User and topic is contained in the subscribe
+	 * message
+	 * 
+	 * @param msg
+	 */
 	public void onSubscribe(SubscribeMsg msg) {
 
 		Logger.log("onSubscribe:" + msg.toString());
 
-		// TODO: subscribe user to the topic
-		// user and topic is contained in the subscribe message
-		
-		throw new UnsupportedOperationException(TODO.method());
+		storage.addSubscriber(msg.getUser(), msg.getTopic());
+
 
 	}
 
+	/**
+	 * Unsubscribes user from the topic
+	 * 
+	 * @param msg
+	 */
 	public void onUnsubscribe(UnsubscribeMsg msg) {
 
 		Logger.log("onUnsubscribe:" + msg.toString());
-
-		// TODO: unsubscribe user to the topic
-		// user and topic is contained in the unsubscribe message
 		
-		throw new UnsupportedOperationException(TODO.method());
+		storage.removeSubscriber(msg.getUser(), msg.getTopic());
+
 	}
 
+	/**
+	 * Publishes the message to clients subsribed to the topic
+	 * 
+	 * @param msg
+	 */
 	public void onPublish(PublishMsg msg) {
 
 		Logger.log("onPublish:" + msg.toString());
 
-		// TODO: publish the message to clients subscribed to the topic
-		// topic and message is contained in the subscribe message
-		// messages must be sent used the corresponding client session objects
-		
-		throw new UnsupportedOperationException(TODO.method());
+		// messages must be sent using the corresponding client session objects
+		Set<String> subscribers = storage.getSubscribers(msg.getTopic());
+		for(String sub : subscribers) {
+			ClientSession cs = storage.getSession(sub);
+			if(cs != null)
+				cs.send(msg);
+		}
 
 	}
 }

@@ -1,6 +1,5 @@
 package no.hvl.dat110.messages;
 
-import no.hvl.dat110.common.TODO;
 
 /**
  * Message sent from client to create publish a message on a topic
@@ -10,43 +9,33 @@ import no.hvl.dat110.common.TODO;
  * 
  * Constructor, get/set-methods, and toString method as described in the project
  * 
- * @author frkmj
+ * @author gr.30
  *
  */
 public class PublishMsg extends Message {
-	
+
 	String topic;
 	String message;
-	
+
 	public PublishMsg(String user, String topic, String message) {
 		super(MessageType.PUBLISH, user);
 		this.topic = topic;
 		this.message = message;
 	}
 
-	
 	public String getTopic() {
 		return topic;
 	}
-
 
 	public void setTopic(String topic) {
 		this.topic = topic;
 	}
 
-
 	public void setMessage(String message) {
 		this.message = message;
 	}
 
-
-	/**
-	 * return message? Eller noe mer ettersom metoden lå klar?
-	 * 
-	 * @return
-	 */
 	public String getMessage() {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		return this.message;
 	}
 }

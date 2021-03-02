@@ -7,7 +7,7 @@ package no.hvl.dat110.messages;
  * MessageType.java. The user is assumed to uniquely identify a connected
  * client.
  * 
- * @author frkmj
+ * @author gr.30
  *
  */
 public abstract class Message {

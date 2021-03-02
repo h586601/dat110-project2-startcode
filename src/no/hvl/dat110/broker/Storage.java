@@ -6,7 +6,6 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import no.hvl.dat110.common.Logger;
-import no.hvl.dat110.common.TODO;
 import no.hvl.dat110.messagetransport.Connection;
 
 /**

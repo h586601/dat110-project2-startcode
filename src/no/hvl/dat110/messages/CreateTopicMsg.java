@@ -6,7 +6,7 @@ package no.hvl.dat110.messages;
  * Constructor, get/set-methods, and toString method as described in the project
  * text
  * 
- * @author frkmj
+ * @author gr.30
  *
  */
 public class CreateTopicMsg extends Message {

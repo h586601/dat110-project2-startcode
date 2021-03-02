@@ -3,7 +3,7 @@ package no.hvl.dat110.messages;
 /**
  * Message sent from client to subsbribe on a topic
  * 
- * @author frkmj
+ * @author gr.30
  *
  */
 public class SubscribeMsg extends Message {

@@ -5,7 +5,7 @@ package no.hvl.dat110.messages;
  * Implements object variable - a topic is required
  * 
  * 
- * @author frkmj
+ * @author gr.30
  *
  */
 public class DeleteTopicMsg extends Message {
