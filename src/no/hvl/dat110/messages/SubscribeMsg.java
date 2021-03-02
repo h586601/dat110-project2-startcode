@@ -25,11 +25,7 @@ public class SubscribeMsg extends Message {
 
 	@Override
 	public String toString() {
-		return super.toString() + "\nSubscribeMsg [topic=" + topic + "]";
+		return "SubscribeMsg [topic=" + topic + "]" + super.toString();
 	}
 
-	public static void main(String[] args) {
-		SubscribeMsg sub = new SubscribeMsg("Helene", "DAT110");
-		System.out.println(MessageUtils.toJson(sub));
-	}
 }

@@ -29,7 +29,7 @@ public class UnsubscribeMsg extends Message {
 
 	@Override
 	public String toString() {
-		return super.toString() + "\nUnsubscribeMsg [topic=" + topic + "]";
+		return "UnsubscribeMsg [topic=" + topic + "]" + super.toString();
 	}
 
 	

@@ -14,6 +14,7 @@ public class CreateTopicMsg extends Message {
 
 	// message sent from client to create topic on the broker
 	private String topic;
+//	private int count;
 
 	public CreateTopicMsg(String user, String topic) {
 		super(MessageType.CREATETOPIC, user);
@@ -30,15 +31,7 @@ public class CreateTopicMsg extends Message {
 
 	@Override
 	public String toString() {
-		return super.toString() + "\nCreateTopicMsg [topic=" + topic + "]";
-	}
-
-	public static void main(String[] args) {
-		
-		CreateTopicMsg ct = new CreateTopicMsg("Ida", "Project2");
-		System.out.println(ct.getUser());
-		System.out.println(MessageUtils.toJson(ct));
-		
+		return "CreateTopicMsg [topic=" + topic + "]" + super.toString();
 	}
 
 }

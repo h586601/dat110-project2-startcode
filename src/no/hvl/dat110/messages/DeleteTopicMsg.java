@@ -28,14 +28,7 @@ public class DeleteTopicMsg extends Message {
 
 	@Override
 	public String toString() {
-		return super.toString() + "\nDeleteTopicMsg [topic=" + topic + "]";
+		return "DeleteTopicMsg [topic=" + topic + "]" + super.toString();
 	}
 	
-	
-
-	public static void main(String[] args) {
-		
-		DeleteTopicMsg dt = new DeleteTopicMsg("Bruker", "Emne");
-		System.out.println(dt);
-	}
 }

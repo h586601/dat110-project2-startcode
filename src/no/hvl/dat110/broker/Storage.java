@@ -65,7 +65,6 @@ public class Storage {
 		
 		ClientSession cs = new ClientSession(user, connection);
 		clients.put(user, cs);
-		Logger.log(user + " registered as a connected client");
 		
 	}
 
@@ -77,7 +76,6 @@ public class Storage {
 	public void removeClientSession(String user) {
 
 		clients.remove(user);
-		Logger.log(user + " removed as a connected client");
 		
 	}
 
@@ -90,7 +88,6 @@ public class Storage {
 
 		Set<String> subscribers = new HashSet<String>();
 		subscriptions.put(topic, subscribers);
-		Logger.log(topic + " created");
 	
 	}
 
@@ -102,7 +99,6 @@ public class Storage {
 	public void deleteTopic(String topic) {
 
 		subscriptions.remove(topic);
-		Logger.log(topic + " deleted");
 	}
 
 	/**
@@ -115,6 +111,7 @@ public class Storage {
 
 		Set<String> subscribers = getSubscribers(topic);
 		subscribers.add(user);
+		subscriptions.put(topic, subscribers);
 		
 	}
 
@@ -128,6 +125,7 @@ public class Storage {
 
 		Set<String> subscribers = getSubscribers(topic);
 		subscribers.remove(user);
+		subscriptions.put(topic, subscribers);
 		
 	}
 }
