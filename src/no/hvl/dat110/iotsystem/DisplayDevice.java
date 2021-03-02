@@ -31,7 +31,7 @@ public class DisplayDevice {
 			count--;
 
 			System.out.println("DISPLAY: " + message);
-		} while (count > 7);
+		} while (count > 0);
 
 		client.unsubscribe(Common.TEMPTOPIC);
 

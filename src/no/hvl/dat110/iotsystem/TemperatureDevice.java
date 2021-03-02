@@ -33,7 +33,7 @@ public class TemperatureDevice {
 				e.printStackTrace();
 			}
 
-		} while (count > 7);
+		} while (count > 0);
 
 		try {
 			Thread.sleep(4000);
